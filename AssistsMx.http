@@ -1,0 +1,6 @@
+@AssistsMx_HostAddress = http://localhost:5023
+
+GET {{AssistsMx_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
