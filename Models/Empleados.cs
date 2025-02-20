@@ -6,23 +6,25 @@ namespace AssistsMx.Models
 {
     public class Empleados
     {
+        private string apellido = string.Empty;
+
         [Key]
         public int ID_Empleado { get; set; }
 
-        [Required, MaxLength(50)]
+        [Required, MaxLength(5)]
         public string Nombre { get; set; }
 
-        [Required, MaxLength(50)]
-        public string Apellido { get; set; }
+        [Required, MaxLength(5)]
+        public string Apellido => Apellido;
 
         public int? Departamento { get; set; }
 
         [MaxLength(50)]
         public string Puesto { get; set; }
 
-        public DateTime Fecha_Contratacion { get; set; }
+        public DateTime Fecha_Contratacion { get; set; } = DateTime.Now;
 
-        [Required, EmailAddress, MaxLength(100)]
+        [Required, EmailAddress, MaxLength(10)]
         public string Email { get; set; }
 
         [MaxLength(20)]
@@ -30,7 +32,7 @@ namespace AssistsMx.Models
 
         public int? ID_Turno { get; set; }
 
-        [ForeignKey("ID_Turno")]
+        [ForeignKey("ID_Turno2")]
         public virtual Turnos? Turno { get; set; }
 
         [ForeignKey("Departamento")]

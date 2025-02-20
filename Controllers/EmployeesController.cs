@@ -20,14 +20,13 @@ namespace AssistsMx.Controllers
         public ActionResult<IEnumerable<Empleados>> GetEmpleados()
         {
             return _context.Empleados.Include(e => e.Turno)      // Incluye la relación con Turno
-                            .Include(e => e.Departamentos) // Incluye la relación con Departamento
+                            .Include(e => e.Nombre) // Incluye la relación con Departamento
                             .ToList();
         }
 
         [HttpPost]
         public ActionResult<Empleados> CrearUsuario(Empleados empleado)
         {
-            _context.Empleados.Add(empleado);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetEmpleados), new { id = empleado.ID_Empleado }, empleado);
         }
