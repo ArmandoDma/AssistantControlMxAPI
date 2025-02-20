@@ -11,5 +11,7 @@ namespace AssistsMx.Models
         public string Nombre_Rol { get; set; }
 
         public string Descripcion { get; set; }
+
+        public virtual ICollection<Usuarios> Usuario { get; set; }
     }
 }

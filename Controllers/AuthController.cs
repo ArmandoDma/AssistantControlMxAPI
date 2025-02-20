@@ -2,6 +2,7 @@
 using AssistsMx.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Org.BouncyCastle.Crypto.Generators;
 using System.IdentityModel.Tokens.Jwt;
@@ -26,11 +27,18 @@ namespace AssistsMx.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] UsuarioLogin usuariologin)
         {
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Usuario == usuariologin.Usuario);
+            var usuario = _context.Usuarios
+                .Include(u => u.Rol)
+                .FirstOrDefault(u => u.Usuario == usuariologin.Usuario);
 
             if(usuario == null || !BCrypt.Net.BCrypt.Verify(usuariologin.Contraseña, usuario.Contraseña))
             {
                 return Unauthorized("Credenciales incorrectas");
+            }
+
+            if (usuario.Rol.Nombre_Rol != usuariologin.Rol)
+            {
+                return Unauthorized("El usuario no tiene un rol asignado.");
             }
 
             var token = GenerarToken(usuario);
@@ -39,14 +47,16 @@ namespace AssistsMx.Controllers
 
         private string GenerarToken(Usuarios usuario)
         {
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!);
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, usuario.Usuario),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Role, usuario.Rol.Nombre_Rol)
             };
 
             var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(2),
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
@@ -58,6 +68,8 @@ namespace AssistsMx.Controllers
         {
             public string Usuario { get; set; }
             public string Contraseña { get; set; }
+
+            public string Rol { get; set; }
         }
     }
 }

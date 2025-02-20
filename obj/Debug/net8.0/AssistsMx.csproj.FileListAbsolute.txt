@@ -255,3 +255,4 @@ C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.sourcelink.json

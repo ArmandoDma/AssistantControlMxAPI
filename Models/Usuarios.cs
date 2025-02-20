@@ -22,7 +22,7 @@ namespace AssistsMx.Models
         public int ID_Empleado { get; set; }
         
         [ForeignKey("ID_Rol")]
-        public virtual Roles? Rol { get; set; }
+        public virtual Roles Rol { get; set; }
 
         [ForeignKey("ID_Empleado")]
         public virtual Empleados? Empleados { get; set; }
