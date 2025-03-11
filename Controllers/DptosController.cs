@@ -23,7 +23,7 @@ namespace AssistsMx.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Turnos> CrearDpto(Departamentos dpto)
+        public ActionResult<Departamentos> CrearDpto(Departamentos dpto)
         {
             _context.Departamentos.Add(dpto);
             _context.SaveChanges();

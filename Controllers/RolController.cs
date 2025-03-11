@@ -23,7 +23,7 @@ namespace AssistsMx.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Empleados> CrearRol(Roles rol)
+        public ActionResult<Roles> CrearRol(Roles rol)
         {
             _context.Roles.Add(rol);
             _context.SaveChanges();
