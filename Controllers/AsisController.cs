@@ -19,7 +19,7 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Asistencia>> GetAsis()
         {
-            return _context.aAsistencia.ToList();
+            return _context.Asistencia.ToList();
         }
 
         [HttpPost]
