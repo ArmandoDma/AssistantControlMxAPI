@@ -23,7 +23,7 @@ namespace AssistsMx.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Permisos> CrearRol(Permisos per)
+        public ActionResult<Permisos> CrearPermiso(Permisos per)
         {
             _context.Permisos.Add(per);
             _context.SaveChanges();
