@@ -25,7 +25,7 @@ namespace AssistsMx.Controllers
         [HttpPost]
         public ActionResult<Turnos> CrearTurno(Turnos turno)
         {
-            _context.Tunros.Add(turno);
+            _context.Turnos.Add(turno);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetTurnos), new { id = turno.ID_Turno }, turno);
         }

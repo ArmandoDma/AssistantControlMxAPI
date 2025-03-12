@@ -19,13 +19,13 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Asistencia>> GetAsis()
         {
-            return _context.Asistencia.ToList();
+            return _context.Asistencias.ToList();
         }
 
         [HttpPost]
         public ActionResult<Asistencia> CrearAsis(Asistencia Asis)
         {
-            _context.Asistencia.Add(Asis);
+            _context.Asistencias.Add(Asis);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetAsis), new { id = Asis.ID_Asistencia }, Asis);
         }

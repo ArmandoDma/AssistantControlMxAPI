@@ -20,7 +20,7 @@ namespace AssistsMx.Controllers
         public ActionResult<IEnumerable<Empleados>> GetEmpleados()
         {
             return _context.Empleados.Include(e => e.Turno)      // Incluye la relación con Turno
-                            .Include(e => e.Nombre) // Incluye la relación con Departamento
+                            .Include(e => e.Departamentos) // Incluye la relación con Departamento
                             .ToList();
         }
 

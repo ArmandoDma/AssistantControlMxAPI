@@ -15,7 +15,7 @@ namespace AssistsMx.Models
         public string Nombre { get; set; }
 
         [Required, MaxLength(5)]
-        public string Apellido => Apellido;
+        public string Apellido {  get; set; }
 
         public int? Departamento { get; set; }
 
@@ -32,7 +32,7 @@ namespace AssistsMx.Models
 
         public int? ID_Turno { get; set; }
 
-        [ForeignKey("ID_Turno2")]
+        [ForeignKey("ID_Turno")]
         public virtual Turnos? Turno { get; set; }
 
         [ForeignKey("Departamento")]

@@ -251,3 +251,8 @@ C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.csproj.CopyComp
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.dll
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\refint\AssistsMx.dll
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.pdb
+C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\AssistsMx.deps.json
+C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\AssistsMx.runtimeconfig.json
+C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\AssistsMx.pdb
+C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.genruntimeconfig.cache
+C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\ref\AssistsMx.dll
