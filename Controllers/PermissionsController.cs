@@ -29,5 +29,46 @@ namespace AssistsMx.Controllers
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetPer), new { id = per.ID_Permiso }, per);
         }
+        [HttpPut("{id}")]
+        public IActionResult UpdatePer(int id, Permisos updatedPer)
+        {
+            if (id != updatedPer.ID_Permiso)
+            {
+                return BadRequest("ID de permiso no coincide.");
+            }
+
+            _context.Entry(updatedPer).State = EntityState.Modified;
+            
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Permisos.Any(a => a.ID_Permiso == id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeletePer(int id)
+        {
+            var per = _context.Permisos.Find(id);
+            if (per == null)
+            {
+                return NotFound();
+            }
+
+            _context.Permisos.Remove(per);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }

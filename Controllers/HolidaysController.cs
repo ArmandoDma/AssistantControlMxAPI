@@ -29,5 +29,46 @@ namespace AssistsMx.Controllers
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetVaca), new { id = vac.ID_Vacaciones }, vac);
         }
+        [HttpPut("{id}")]
+        public IActionResult UpdateHoli(int id, Vacaciones updatedHoli)
+        {
+            if (id != updatedHoli.ID_Vacaciones)
+            {
+                return BadRequest("ID de vacaciones no coincide.");
+            }
+
+            _context.Entry(updatedHoli).State = EntityState.Modified;
+            
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Vacaciones.Any(a => a.ID_Vacaciones == id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteHoli(int id)
+        {
+            var vac = _context.Vacaciones.Find(id);
+            if (vac == null)
+            {
+                return NotFound();
+            }
+
+            _context.Vacaciones.Remove(vac);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
