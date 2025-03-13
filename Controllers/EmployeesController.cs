@@ -46,7 +46,7 @@ namespace AssistsMx.Controllers
 
             // Verificar si el nuevo turno y departamento existen
             var turno = await _context.Turnos.FindAsync(updatedEmpleado.ID_Turno);
-            var departamento = await _context.Departamentos.FindAsync(updatedEmpleado.ID_Departamento);
+            var departamento = await _context.Departamentos.FindAsync(updatedEmpleado.Departamento);
 
             if (turno == null || departamento == null)
             {
@@ -57,7 +57,7 @@ namespace AssistsMx.Controllers
             empleado.Nombre = updatedEmpleado.Nombre;
             empleado.Apellido = updatedEmpleado.Apellido;
             empleado.ID_Turno = updatedEmpleado.ID_Turno;
-            empleado.ID_Departamento = updatedEmpleado.ID_Departamento;
+            empleado.Departamento = updatedEmpleado.Departamento;
             empleado.Turno = turno;
             empleado.Departamentos = departamento;
 

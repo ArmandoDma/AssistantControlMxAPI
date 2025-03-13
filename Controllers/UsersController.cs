@@ -69,8 +69,7 @@ namespace AssistsMx.Controllers
             }
 
             // Actualizar los datos del usuario
-            usuario.Nombre = updatedUsuario.Nombre;
-            usuario.Email = updatedUsuario.Email;
+            usuario.Usuario = updatedUsuario.Usuario;
             usuario.ID_Rol = updatedUsuario.ID_Rol;
             usuario.ID_Empleado = updatedUsuario.ID_Empleado;
             usuario.Rol = rol;
