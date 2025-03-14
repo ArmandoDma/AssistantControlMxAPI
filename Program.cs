@@ -50,6 +50,7 @@ builder.Services.AddControllers()
 .AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    options.JsonSerializerOptions.WriteIndented = true;
 });
 
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!);

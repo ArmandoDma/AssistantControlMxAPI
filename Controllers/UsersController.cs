@@ -58,8 +58,7 @@ namespace AssistsMx.Controllers
             {
                 return NotFound();
             }
-
-            // Verificar si el nuevo rol y empleado existen
+           
             var rol = await _context.Roles.FindAsync(updatedUsuario.ID_Rol);
             var empleado = await _context.Empleados.FindAsync(updatedUsuario.ID_Empleado);
 
@@ -67,8 +66,7 @@ namespace AssistsMx.Controllers
             {
                 return BadRequest("Rol o Empleado no válido.");
             }
-
-            // Actualizar los datos del usuario
+            
             usuario.Usuario = updatedUsuario.Usuario;
             usuario.ID_Rol = updatedUsuario.ID_Rol;
             usuario.ID_Empleado = updatedUsuario.ID_Empleado;
@@ -85,6 +83,7 @@ namespace AssistsMx.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                return Ok(new { message = "Usuario actualizado correctamente." });
             }
             catch (DbUpdateConcurrencyException)
             {

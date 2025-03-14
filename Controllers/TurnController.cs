@@ -46,6 +46,7 @@ namespace AssistsMx.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!_context.Turnos.Any(a => a.ID_Turno == id))
+
                 {
                     return NotFound();
                 }

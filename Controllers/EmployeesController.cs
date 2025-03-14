@@ -19,17 +19,19 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Empleados>> GetEmpleados()
         {
-            return _context.Empleados.Include(e => e.Turno)      // Incluye la relación con Turno
-                            .Include(e => e.Departamentos) // Incluye la relación con Departamento
+            return _context.Empleados.Include(e => e.Turno)
+                            .Include(e => e.Departamentos) 
                             .ToList();
         }
 
         [HttpPost]
         public ActionResult<Empleados> CrearUsuario(Empleados empleado)
         {
+            _context.Empleados.Add(empleado);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetEmpleados), new { id = empleado.ID_Empleado }, empleado);
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmpleado(int id, Empleados updatedEmpleado)
         {
@@ -44,7 +46,7 @@ namespace AssistsMx.Controllers
                 return NotFound();
             }
 
-            // Verificar si el nuevo turno y departamento existen
+            
             var turno = await _context.Turnos.FindAsync(updatedEmpleado.ID_Turno);
             var departamento = await _context.Departamentos.FindAsync(updatedEmpleado.Departamento);
 
@@ -53,9 +55,10 @@ namespace AssistsMx.Controllers
                 return BadRequest("Turno o Departamento no válido.");
             }
 
-            // Actualizar los datos del empleado
             empleado.Nombre = updatedEmpleado.Nombre;
             empleado.Apellido = updatedEmpleado.Apellido;
+            empleado.Puesto = updatedEmpleado.Puesto;
+            empleado.Email = updatedEmpleado.Email;
             empleado.ID_Turno = updatedEmpleado.ID_Turno;
             empleado.Departamento = updatedEmpleado.Departamento;
             empleado.Turno = turno;
@@ -79,7 +82,8 @@ namespace AssistsMx.Controllers
                 }
             }
 
-            return NoContent();
+            
+           return Ok("Empleado actualizado correctamente");
         }
 
         [HttpDelete("{id}")]

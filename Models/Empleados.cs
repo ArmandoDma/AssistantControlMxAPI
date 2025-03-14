@@ -6,15 +6,14 @@ namespace AssistsMx.Models
 {
     public class Empleados
     {
-        private string apellido = string.Empty;
 
         [Key]
         public int ID_Empleado { get; set; }
 
-        [Required, MaxLength(5)]
+        [Required, MaxLength(50)]
         public string Nombre { get; set; }
 
-        [Required, MaxLength(5)]
+        [Required, MaxLength(50)]
         public string Apellido {  get; set; }
 
         public int? Departamento { get; set; }
@@ -24,7 +23,7 @@ namespace AssistsMx.Models
 
         public DateTime Fecha_Contratacion { get; set; } = DateTime.Now;
 
-        [Required, EmailAddress, MaxLength(10)]
+        [Required, EmailAddress, MaxLength(100)]
         public string Email { get; set; }
 
         [MaxLength(20)]
