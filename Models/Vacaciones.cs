@@ -22,6 +22,6 @@ namespace AssistsMx.Models
         public string Estado { get; set; }
 
         [ForeignKey("ID_Empleado")]
-        public virtual Empleados Empleados { get; set; }
+        public virtual Empleados? Empleados { get; set; }
     }
 }

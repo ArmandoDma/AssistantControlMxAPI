@@ -25,8 +25,33 @@ namespace AssistsMx.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Empleados> CrearUsuario(Empleados empleado)
+        public ActionResult<Empleados> CrearEmpleado(Empleados empleado)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (empleado.ID_Turno != null)
+            {
+                var turno = _context.Turnos.FirstOrDefault(t => t.ID_Turno == empleado.ID_Turno);
+                if (turno == null)
+                {
+                    return BadRequest("El turno especificado no existe.");
+                }
+                empleado.Turno = turno;
+            }
+
+            if (empleado.Departamento != null)
+            {
+                var departamento = _context.Departamentos.FirstOrDefault(d => d.ID_Departamento == empleado.Departamento);
+                if (departamento == null)
+                {
+                    return BadRequest("El departamento especificado no existe.");
+                }
+                empleado.Departamentos = departamento;
+            }
+
             _context.Empleados.Add(empleado);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetEmpleados), new { id = empleado.ID_Empleado }, empleado);
@@ -98,7 +123,7 @@ namespace AssistsMx.Controllers
             _context.Empleados.Remove(empleado);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok("empleado eliminado de forma correcta");
         }
 
     }

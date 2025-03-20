@@ -19,7 +19,7 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Roles>> GetRoles()
         {
-            return _context.Roles.ToList();
+            return _context.Roles.Include(r => r.Usuario).ToList();
         }
 
         [HttpPost]
@@ -54,7 +54,7 @@ namespace AssistsMx.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return Ok("Rol actualizado correctamente.");
         }
 
         [HttpDelete("{id}")]
@@ -68,7 +68,7 @@ namespace AssistsMx.Controllers
 
             _context.Roles.Remove(rol);
             _context.SaveChanges();
-            return NoContent();
+            return Ok("rol eliminado de forma exitosa.");
         }
     }
 }

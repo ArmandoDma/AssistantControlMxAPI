@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using AssistsMx.Data;
 using AssistsMx.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AssistsMx.Controllers
 {
@@ -19,12 +20,30 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Asistencia>> GetAsis()
         {
-            return _context.Asistencias.ToList();
+            return _context.Asistencias.Include(a => a.Empleados).ToList();
         }
 
         [HttpPost]
         public ActionResult<Asistencia> CrearAsis(Asistencia Asis)
         {
+            if (Asis == null)
+            {
+                return BadRequest("El objeto asistencia es nulo.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            var empleadoExiste = _context.Empleados.Any(e => e.ID_Empleado == Asis.ID_Empleado);
+            if (!empleadoExiste)
+            {
+                return BadRequest("El empleado no existe.");
+            }
+            
+            Asis.Empleados = null;
+
             _context.Asistencias.Add(Asis);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetAsis), new { id = Asis.ID_Asistencia }, Asis);
@@ -54,7 +73,7 @@ namespace AssistsMx.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return Ok("asistencia actualizada de forma correcta.");
         }
 
         [HttpDelete("{id}")]
@@ -68,7 +87,7 @@ namespace AssistsMx.Controllers
 
             _context.Asistencias.Remove(asis);
             _context.SaveChanges();
-            return NoContent();
+            return Ok("asistencia eliminada correctamente.");
         }
     }
 }

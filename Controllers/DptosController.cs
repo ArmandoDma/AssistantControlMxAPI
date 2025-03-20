@@ -19,18 +19,19 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Departamentos>> GetDptos()
         {
-            return _context.Departamentos.ToList();
+            return _context.Departamentos.Include(e => e.Empleados).ToList();
         }
 
         [HttpPost]
         public ActionResult<Departamentos> CrearDpto(Departamentos dpto)
-        {
+        {            
+
             _context.Departamentos.Add(dpto);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetDptos), new { id = dpto.ID_Departamento }, dpto);
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateAsis(int id, Departamentos updatedDptos)
+        public IActionResult UpdateDptos(int id, Departamentos updatedDptos)
         {
             if (id != updatedDptos.ID_Departamento)
             {
@@ -54,7 +55,7 @@ namespace AssistsMx.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return Ok("departamento actualizado exitosamente.");
         }
 
         [HttpDelete("{id}")]
@@ -68,7 +69,7 @@ namespace AssistsMx.Controllers
 
             _context.Departamentos.Remove(dptos);
             _context.SaveChanges();
-            return NoContent();
+            return Ok("departamento eliminado exitosamente.");
         }
     }
 }

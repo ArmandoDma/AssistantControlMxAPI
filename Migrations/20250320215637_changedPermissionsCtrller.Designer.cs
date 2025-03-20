@@ -3,6 +3,7 @@ using System;
 using AssistsMx.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssistsMx.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250320215637_changedPermissionsCtrller")]
+    partial class changedPermissionsCtrller
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -308,7 +311,7 @@ namespace AssistsMx.Migrations
             modelBuilder.Entity("AssistsMx.Models.Vacaciones", b =>
                 {
                     b.HasOne("AssistsMx.Models.Empleados", "Empleados")
-                        .WithMany("Vacaciones")
+                        .WithMany()
                         .HasForeignKey("ID_Empleado")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -324,8 +327,6 @@ namespace AssistsMx.Migrations
             modelBuilder.Entity("AssistsMx.Models.Empleados", b =>
                 {
                     b.Navigation("Permisos");
-
-                    b.Navigation("Vacaciones");
                 });
 
             modelBuilder.Entity("AssistsMx.Models.Roles", b =>

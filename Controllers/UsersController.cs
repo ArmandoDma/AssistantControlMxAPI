@@ -31,7 +31,7 @@ namespace AssistsMx.Controllers
             var rol = _context.Roles.Find(usuario.ID_Rol);
             var empleado = _context.Empleados.Find(usuario.ID_Empleado);
 
-            if (rol != null && empleado != null)
+            if (rol == null && empleado == null)
             {
                 return BadRequest("Rol o Empleado no válido.");
             }

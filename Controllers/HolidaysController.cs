@@ -19,12 +19,20 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Vacaciones>> GetVaca()
         {
-            return _context.Vacaciones.ToList();
+            return _context.Vacaciones.Include(v => v.Empleados).ToList();
         }
 
         [HttpPost]
         public ActionResult<Vacaciones> CrearVaca(Vacaciones vac)
         {
+            var empleados = _context.Empleados.Find(vac.ID_Empleado);
+            if(empleados == null)
+            {
+                return BadRequest("Empleado no encontrado.");
+            }
+
+            vac.Empleados = empleados;
+
             _context.Vacaciones.Add(vac);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetVaca), new { id = vac.ID_Vacaciones }, vac);
@@ -54,7 +62,7 @@ namespace AssistsMx.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return Ok("Periodo de vacaciones actualizado.");
         }
 
         [HttpDelete("{id}")]
@@ -68,7 +76,7 @@ namespace AssistsMx.Controllers
 
             _context.Vacaciones.Remove(vac);
             _context.SaveChanges();
-            return NoContent();
+            return Ok("Periodo de vacaciones eliminado.");
         }
     }
 }

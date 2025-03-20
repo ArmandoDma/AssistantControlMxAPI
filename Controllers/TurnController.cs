@@ -19,22 +19,25 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Turnos>> GetTurnos()
         {
-            return _context.Turnos.ToList();
+            var turno = _context.Turnos.Include(t => t.Empleados).ToList();
+            return Ok(turno);
         }
 
         [HttpPost]
         public ActionResult<Turnos> CrearTurno(Turnos turno)
         {
+            turno.Empleados = null;
+
             _context.Turnos.Add(turno);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetTurnos), new { id = turno.ID_Turno }, turno);
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateAsis(int id, Turnos updatedTurno)
+        public IActionResult UpdateTurno(int id, Turnos updatedTurno)
         {
             if (id != updatedTurno.ID_Turno)
             {
-                return BadRequest("ID de asistencia no coincide.");
+                return BadRequest("ID del turno no coincide.");
             }
 
             _context.Entry(updatedTurno).State = EntityState.Modified;
@@ -55,7 +58,7 @@ namespace AssistsMx.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return Ok("Actualizado correctamente");
         }
 
         [HttpDelete("{id}")]
@@ -69,7 +72,7 @@ namespace AssistsMx.Controllers
 
             _context.Turnos.Remove(turno);
             _context.SaveChanges();
-            return NoContent();
+            return Ok("Turno eliminado correctamente");
         }
     }
 }

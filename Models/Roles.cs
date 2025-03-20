@@ -12,6 +12,6 @@ namespace AssistsMx.Models
 
         public string Descripcion { get; set; }
 
-        public virtual ICollection<Usuarios> Usuario { get; set; }
+        public virtual ICollection<Usuarios> Usuario { get; set; } = new List<Usuarios>();
     }
 }

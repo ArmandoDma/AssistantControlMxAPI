@@ -19,12 +19,20 @@ namespace AssistsMx.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Permisos>> GetPer()
         {
-            return _context.Permisos.ToList();
+            return _context.Permisos.Include(p => p.Empleado).ToList();
         }
 
         [HttpPost]
         public ActionResult<Permisos> CrearPermiso(Permisos per)
         {
+            var empleado = _context.Empleados.Find(per.ID_Empleado);
+            if (empleado == null)
+            {
+                return BadRequest("Empleado no encontrado.");
+            }
+
+            per.Empleado = empleado;
+
             _context.Permisos.Add(per);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetPer), new { id = per.ID_Permiso }, per);
@@ -54,7 +62,7 @@ namespace AssistsMx.Controllers
                     throw;
                 }
             }
-            return NoContent();
+            return Ok("permiso actualizado correctamente.");
         }
 
         [HttpDelete("{id}")]
@@ -68,7 +76,7 @@ namespace AssistsMx.Controllers
 
             _context.Permisos.Remove(per);
             _context.SaveChanges();
-            return NoContent();
+            return Ok("permiso eliminado.");
         }
     }
 }

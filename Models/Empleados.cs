@@ -36,5 +36,9 @@ namespace AssistsMx.Models
 
         [ForeignKey("Departamento")]
         public virtual Departamentos? Departamentos { get; set; }
+        
+        public virtual ICollection<Permisos> Permisos { get; set; } = new List<Permisos>();
+
+        public virtual ICollection<Vacaciones> Vacaciones { get; set; } = new List<Vacaciones>();
     }
 }

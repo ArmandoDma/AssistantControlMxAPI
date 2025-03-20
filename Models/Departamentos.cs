@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace AssistsMx.Models
 {
@@ -12,6 +13,6 @@ namespace AssistsMx.Models
 
         public string Descripcion { get; set; }
 
-        public virtual ICollection<Empleados> Empleados { get; set; }
+        public virtual ICollection<Empleados> Empleados { get; set; } = new List<Empleados>();
     }
 }

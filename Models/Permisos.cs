@@ -9,18 +9,18 @@ namespace AssistsMx.Models
         public int ID_Permiso { get; set; }
 
         [Required]
-        [ForeignKey("ID_Empleado")]
         public int ID_Empleado { get; set; }
 
         [Required]
         public DateTime Fecha { get; set; }
 
-        [Required]
+        [Required, MaxLength(200)]
         public string Motivo { get; set; }
 
         [Required]
         public string Estado { get; set; }
 
-        public virtual Empleados Empleados { get; set; }
+        [ForeignKey("ID_Empleado")]
+        public virtual Empleados? Empleado { get; set; }
     }
 }

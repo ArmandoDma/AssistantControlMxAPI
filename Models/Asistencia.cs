@@ -7,8 +7,8 @@ namespace AssistsMx.Models
     {
         [Key]
         public int ID_Asistencia { get; set; }
-      
-        [ForeignKey("ID_Empleado")]
+
+        [Required]
         public int ID_Empleado { get; set; }
 
         [Required]
@@ -22,6 +22,7 @@ namespace AssistsMx.Models
         [Required]
         public string Estado { get; set; }
 
-        public virtual Empleados Empleados { get; set; }
+        [ForeignKey("ID_Empleado")]
+        public virtual Empleados? Empleados { get; set; }
     }
 }
