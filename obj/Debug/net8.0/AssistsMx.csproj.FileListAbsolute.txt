@@ -10,9 +10,7 @@ C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\Swashbuckle.AspNetCore.Sw
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -81,7 +79,6 @@ C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Composition.Conven
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Composition.Hosting.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Composition.Runtime.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Composition.TypedParts.dll
-C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Formats.Asn1.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Windows.Extensions.dll
@@ -247,7 +244,6 @@ C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\staticwebassets\msbuild.b
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.AssistsMx.props
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\scopedcss\bundle\AssistsMx.styles.css
-C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.csproj.CopyComplete
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.dll
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\refint\AssistsMx.dll
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.pdb
@@ -256,3 +252,7 @@ C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\AssistsMx.runtimeconfig.j
 C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\AssistsMx.pdb
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.genruntimeconfig.cache
 C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\ref\AssistsMx.dll
+C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Formats.Asn1.dll
+C:\Users\arman\source\repos\AssistsMx\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\arman\source\repos\AssistsMx\obj\Debug\net8.0\AssistsMx.csproj.CopyComplete

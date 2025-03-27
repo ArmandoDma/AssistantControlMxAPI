@@ -95,9 +95,7 @@ namespace AssistsMx.Controllers
                 {
                     throw;
                 }
-            }
-
-            return NoContent();
+            }            
         }
 
         [HttpDelete("{id}")]
